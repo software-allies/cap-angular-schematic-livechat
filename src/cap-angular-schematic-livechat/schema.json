@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsMyComponent",
+  "title": "My Component Schema",
+  "type": "object",
+  "properties": {
+    "embeddedServiceName": {
+      "type": "string",
+      "description": "Embedded service name",
+      "x-prompt": "Embedded service name: "
+    },
+    "idServiceName": {
+      "type": "string",
+      "description": "ID Service Name",
+      "x-prompt": "ID Service Name: "
+    },
+    "urlSandbox": {
+      "type": "string",
+      "description": "URL Sandbox",
+      "x-prompt": "URL Sandbox: "
+    },
+    "urlDomain": {
+      "type": "string",
+      "description": "URL Domain",
+      "x-prompt": "URL Domain:"
+    },
+    "baseLiveAgentContentURL": {
+      "type": "string",
+      "description": "Base LiveAgent Content URL",
+      "x-prompt": "Base LiveAgent Content URL: "
+    },
+    "deploymentId": {
+      "type": "string",
+      "description": "Deployment ID",
+      "x-prompt": "Deployment ID: "
+    },
+    "buttonId": {
+      "type": "string",
+      "description": "Button ID",
+      "x-prompt": "Button ID: "
+    },
+    "baseLiveAgentURL": {
+      "type": "string",
+      "description": "Base LiveAgent URL",
+      "x-prompt": "Base LiveAgent URL: "
+    },
+    "scriptUrl": {
+      "type": "string",
+      "description": "Script URL",
+      "x-prompt": "Script URL: "
+    }
+  },
+  "required": [
+    "embeddedServiceName",
+    "idServiceName",
+    "urlSandbox",
+    "urlDomain",
+    "baseLiveAgentContentURL",
+    "deploymentId",
+    "buttonId",
+    "baseLiveAgentURL",
+    "scriptUrl"
+  ]
+}
