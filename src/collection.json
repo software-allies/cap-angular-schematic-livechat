@@ -3,7 +3,7 @@
   "schematics": {
     "cap-angular-schematic-livechat": {
       "description": "Schematics for build a UI integration with Live Chat.",
-      "factory": "./cap-angular-schematic-livechat/index#capAngularSchematicLivechat",
+      "factory": "./cap-angular-schematic-livechat/index",
       "schema": "./cap-angular-schematic-livechat/schema.json"
     }
   }
