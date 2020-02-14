@@ -51,7 +51,7 @@ function addModuleToImports(options: any): Rule {
     );
     const modulePath = getAppModulePath(host, getProjectMainFile(project));
     const moduleName = 'CapLiveChatModule';
-    addToRootModule(host, modulePath, moduleName, 'cap-livechat', options)
+    addToRootModule(host, modulePath, moduleName, 'cap-livechat-sf', options)
     return host;
   };
 }
