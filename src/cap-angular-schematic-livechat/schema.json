@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "SchematicsMyComponent",
-  "title": "My Component Schema",
+  "id": "SchematicsCAPLiveChat",
+  "title": "CAP LiveChat Schematic",
   "type": "object",
   "properties": {
     "embeddedServiceName": {
@@ -48,6 +48,11 @@
       "type": "string",
       "description": "Script URL",
       "x-prompt": "Script URL: "
+    },
+    "eswLiveAgentDevName": {
+      "type": "string",
+      "description": "ESW live Agent Dev Name",
+      "x-prompt": "ESW Live Agent Dev Name: "
     }
   },
   "required": [
@@ -59,6 +64,7 @@
     "deploymentId",
     "buttonId",
     "baseLiveAgentURL",
-    "scriptUrl"
+    "scriptUrl",
+    "eswLiveAgentDevName"
   ]
 }

@@ -1,9 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
-
-
-
-@Injectable()
-export class LiveChatService {
+export interface ISchema {
+  modulePath?: string;
   embeddedServiceName: string;
   idServiceName: string;
   urlSandbox: string;
@@ -13,9 +9,5 @@ export class LiveChatService {
   buttonId: string;
   baseLiveAgentURL: string;
   scriptUrl: string;
-  configurations: any;
-
-  constructor() {
-
-  }
+  eswLiveAgentDevName: string;
 }
