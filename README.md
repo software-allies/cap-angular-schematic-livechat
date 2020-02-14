@@ -1,28 +1,24 @@
-# Getting Started With Schematics
+# CAP LIVECHAT SF Schematic 💻 [![Generic badge](https://img.shields.io/badge/CAP-Active-<COLOR>.svg)](https://shields.io/) 
 
-This repository is a basic Schematic implementation that serves as a starting point to create and publish Schematics to NPM.
+Create a chat using SalesForce and Angular  
 
-### Testing
+## **Previous requirements**
 
-To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
+Before installing this package into your Angular application, you must be configured the live agent into your salesforce application. Follow this [link](https://help.salesforce.com/articleView?id=snapins_chat_setup.htm&type=5) for more instructions.
 
-Check the documentation with
-```bash
-schematics --help
-```
+### Installation
 
-### Unit Testing
+``` ng add cap-livechat ```
 
-`npm run test` will run the unit tests, using Jasmine as a runner and test framework.
+### **Note**
+CAP Live Chat will be added into the AppModule
 
-### Publishing
+### **HTML tags**
 
-To publish, simply do:
+`<cap-live-chat-sf></cap-live-chat-sf>` 
 
-```bash
-npm run build
-npm publish
-```
+![Alt text](https://github.com/software-allies/cap-livechat/blob/development/assets/images/cap-livechat.png?raw=true "caplivechat")
 
-That's it!
- 
+### **Local test**
+
+In case that you don't have a domain and you want to test the CapLiveChat package we recomend you [ngrok](https://ngrok.com/). ``Ngrok`` provide a multiplatform tunnelling, reverse proxy software that establishes secure tunnels from a public endpoint such as internet to a locally running network service while capturing all traffic for detailed inspection and replay. For detailed inspection and replay. Follow this [link](https://www.npmjs.com/package/ngrok) for more instructions.

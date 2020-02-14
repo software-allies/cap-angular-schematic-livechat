@@ -1,15 +1,22 @@
 {
   "name": "cap-angular-schematic-livechat",
-  "version": "0.0.0",
-  "description": "A blank schematics",
+  "version": "0.0.1",
+  "description": "Create a chat using SalesForce (Live agent) and Angular ",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js"
   },
   "keywords": [
-    "schematics"
+    "Angular",
+    "LiveChat",
+    "Salesforce",
+    "Live Agent"
   ],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/software-allies/cap-angular-schematic-livechat/tree/feature/logic"
+  },
+  "author": "Diego SanMo",
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
