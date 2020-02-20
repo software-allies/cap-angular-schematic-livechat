@@ -1,26 +1,13 @@
 import { Rule, Tree, chain, SchematicContext, SchematicsException } from '@angular-devkit/schematics';
-import { join, normalize } from 'path';
 import { getWorkspace, NodeDependencyType, NodeDependency, addPackageJsonDependency, getProjectFromWorkspace, getAppModulePath, addImportToModule } from 'schematics-utilities';
 import { ISchema } from '../interfaces/schema.interface';
 import { getProjectMainFile, getSourceFile } from 'schematics-utilities/dist/cdk';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
-export function setupOptions(host: Tree, options: any): Tree {
-  const workspace = getWorkspace(host);
-  if (!options.project) {
-    options.project = Object.keys(workspace.projects)[0];
-  }
-  const project = workspace.projects[options.project];
-
-  options.path = join(normalize(project.root), 'src/app/modules/cap-livechat');
-  return host;
-}
-
-
 export function addPackageJsonDependencies(): Rule {
   return (host: Tree, context: SchematicContext) => {
     const dependencies: NodeDependency[] = [
-      { type: NodeDependencyType.Default, version: '~0.0.2', name: 'cap-livechat' },
+      { type: NodeDependencyType.Default, version: '~0.0.4', name: 'cap-livechat-sf' },
     ];
 
     dependencies.forEach(dependency => {
