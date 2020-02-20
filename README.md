@@ -8,7 +8,7 @@ Before installing this package into your Angular application, you must be config
 
 ### Installation
 
-``` ng add cap-livechat ```
+``` ng add cap-angular-schematic-livechat ```
 
 ### **Note**
 CAP Live Chat will be added into the AppModule
