@@ -7,7 +7,7 @@ import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 export function addPackageJsonDependencies(): Rule {
   return (host: Tree, context: SchematicContext) => {
     const dependencies: NodeDependency[] = [
-      { type: NodeDependencyType.Default, version: '0.0.4', name: 'cap-livechat-sf' },
+      { type: NodeDependencyType.Default, version: '0.0.5', name: 'cap-livechat-sf' },
     ];
 
     dependencies.forEach(dependency => {
