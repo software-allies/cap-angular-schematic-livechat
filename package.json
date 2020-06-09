@@ -1,6 +1,6 @@
 {
   "name": "cap-angular-schematic-livechat",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Create a chat using SalesForce (Live agent) and Angular ",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -20,8 +20,8 @@
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "^7.3.1",
-    "@angular-devkit/schematics": "^7.3.1",
+    "@angular-devkit/core": "^9.1.7",
+    "@angular-devkit/schematics": "^9.1.7",
     "@types/jasmine": "^3.0.0",
     "@types/node": "^8.0.31",
     "cap-utilities": "0.0.8",
