@@ -1,90 +1,85 @@
-import { Rule, Tree, chain, SchematicContext, SchematicsException } from '@angular-devkit/schematics';
-import { getWorkspace, NodeDependencyType, NodeDependency, addPackageJsonDependency, getProjectFromWorkspace, getAppModulePath, addImportToModule } from 'schematics-utilities';
+import { Rule, Tree, chain, SchematicContext } from '@angular-devkit/schematics';
+import { NodeDependencyType } from 'schematics-utilities';
 import { ISchema } from '../interfaces/schema.interface';
-import { getProjectMainFile, getSourceFile } from 'schematics-utilities/dist/cdk';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
+import * as cap_utilities from 'cap-utilities';
+
+export function capAngularSchematicLiveChat(_options: ISchema): any {
+  return (tree: Tree, _context: SchematicContext) => cap_utilities.setupOptions(tree, _options);
+}
+
 export function addPackageJsonDependencies(): Rule {
-  return (host: Tree, context: SchematicContext) => {
-    const dependencies: NodeDependency[] = [
-      { type: NodeDependencyType.Default, version: '0.0.5', name: 'cap-livechat-sf' },
-    ];
-
-    dependencies.forEach(dependency => {
-      addPackageJsonDependency(host, dependency);
-      context.logger.log('info', `✅️ Added "${dependency.name}" into ${dependency.type}`);
-    });
-
-    return host;
-  };
+  return (host: Tree) => cap_utilities.addPackageToPackageJson(host, NodeDependencyType.Default, 'cap-livechat-sf', '~0.0.5');
 }
 
 export function installPackageJsonDependencies(): Rule {
   return (host: Tree, context: SchematicContext) => {
     context.addTask(new NodePackageInstallTask());
     context.logger.log('info', `🔍 Installing packages...`);
-
     return host;
   };
 }
 
-function addModuleToImports(options: any): Rule {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
-    const project = getProjectFromWorkspace(
-      workspace,
-      // Takes the first project in case it's not provided by CLI
-      options.project ? options.project : Object.keys(workspace['projects'])[0]
-    );
-    const modulePath = getAppModulePath(host, getProjectMainFile(project));
-    const moduleName = 'CapLiveChatModule';
-    addToRootModule(host, modulePath, moduleName, 'cap-livechat-sf', options)
-    return host;
-  };
-}
+export function addToRootModule(options: ISchema) {
 
-export function addToRootModule(host: Tree, modulePath: string, moduleName: string, src: string, options?: any) {
-
-  const moduleSource = getSourceFile(host, modulePath);
-
-  if (!moduleSource) {
-    throw new SchematicsException(`Module not found: ${modulePath}`);
-  }
-
-  const changes = addImportToModule(moduleSource as any, modulePath, moduleName, src);
-  let recorder = host.beginUpdate(modulePath);
-
-  changes.forEach((change: any) => {
-    // if (change instanceof InsertChange) {
-    if (change.toAdd === ',\n    CapLiveChatModule') {
-      change.toAdd = `,\n    
-    CapLiveChatModule.forRoot({
-      embeddedServiceName: '${options.embeddedServiceName}',
-      idServiceName: '${options.idServiceName}',
-      urlSandbox: '${options.urlSandbox}',
-      urlDomain: '${options.urlDomain}',
-      baseLiveAgentContentURL: '${options.baseLiveAgentContentURL}',
-      deploymentId: '${options.deploymentId}',
-      buttonId: '${options.buttonId}',
-      baseLiveAgentURL: '${options.baseLiveAgentURL}',
-      scriptUrl: '${options.scriptUrl}',
-      eswLiveAgentDevName: '${options.eswLiveAgentDevName}'
-    })`;
+  return (host: Tree) => cap_utilities.addToNgModule(host, options, [{
+    name: 'CapLiveChatModule',
+    path: `cap-livechat-sf`,
+    type: 'module',
+    forRootValues: {
+      params: [
+        {
+          name: 'embeddedServiceName',
+          value: `${options.embeddedServiceName}`
+        },
+        {
+          name: 'idServiceName',
+          value: `${options.idServiceName}`
+        },
+        {
+          name: 'urlSandbox',
+          value: `${options.urlSandbox}`
+        },
+        {
+          name: 'urlDomain',
+          value: `${options.urlDomain}`
+        },
+        {
+          name: 'baseLiveAgentContentURL',
+          value: `${options.baseLiveAgentContentURL}`
+        },
+        {
+          name: 'deploymentId',
+          value: `${options.deploymentId}`
+        },
+        {
+          name: 'buttonId',
+          value: `${options.buttonId}`
+        },
+        {
+          name: 'baseLiveAgentURL',
+          value: `${options.baseLiveAgentURL}`
+        },
+        {
+          name: 'scriptUrl',
+          value: `${options.scriptUrl}`
+        },
+        {
+          name: 'eswLiveAgentDevName',
+          value: `${options.eswLiveAgentDevName}`
+        }
+      ]
     }
-    recorder.insertLeft(change.pos, change.toAdd);
 
-    // }
-  });
-  host.commitUpdate(recorder);
-
-  return host
+  }])
 }
-
 
 export default function (options: ISchema): Rule {
   return chain([
+    capAngularSchematicLiveChat(options),
     addPackageJsonDependencies(),
     installPackageJsonDependencies(),
-    addModuleToImports(options)
+    addToRootModule(options)
   ]);
 }

@@ -1,5 +1,4 @@
 export interface ISchema {
-  modulePath?: string;
   embeddedServiceName: string;
   idServiceName: string;
   urlSandbox: string;
@@ -10,4 +9,8 @@ export interface ISchema {
   baseLiveAgentURL: string;
   scriptUrl: string;
   eswLiveAgentDevName: string;
+  name?: string;
+  path?: string;
+  module?: any;
+  project?: any;
 }
